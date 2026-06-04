@@ -1,6 +1,6 @@
-# ⚖️ VakilAgent — Agentic AI for Indian Court Workflows
+# ⚖️ VakilAI — Agentic AI for Indian Court Workflows
 
-> *"Provakil tells you the building is on fire. VakilAgent calls the fire brigade."*
+> *"Provakil tells you the building is on fire. VakilAI calls the fire brigade."*
 
 ---
 
@@ -19,13 +19,13 @@ Multiply that by 50 cases and 365 days. That is why lawyers are buried in admin 
 
 **Existing tools like Provakil notify lawyers. They stop there. Nobody acts.**
 
-VakilAgent is the first agentic system that converts a court event directly into completed action — autonomously, intelligently, and safely.
+VakilAI is the first agentic system that converts a court event directly into completed action — autonomously, intelligently, and safely.
 
 ---
 
 ## 💡 Solution
 
-**VakilAgent** is a role-aware autonomous agent that:
+**VakilAI** is a role-aware autonomous agent that:
 
 1. **Watches** eCourts API 24/7 for any case updates
 2. **Understands** what type of event occurred and its legal significance
@@ -42,7 +42,7 @@ The lawyer wakes up to a dashboard that says:
 ```
 eCourts API detects update (new date / order / filing)
                 ↓
-VakilAgent wakes up and reads the event
+VakilAI wakes up and reads the event
                 ↓
 Agent reasons: What type of event? What is the urgency?
                What does case history say? What action is needed?
@@ -104,7 +104,7 @@ The lawyer is **never bypassed** on things that matter legally. They are only re
 
 ## 🆚 How We Differ From Existing Solutions
 
-| Feature | eCourts App | Provakil | VakilAgent |
+| Feature | eCourts App | Provakil | VakilAI |
 |---|---|---|---|
 | Monitors courts | ✅ Manual check | ✅ Automatic | ✅ Automatic |
 | Sends notification | ❌ | ✅ | ✅ |
@@ -145,9 +145,9 @@ The lawyer is **never bypassed** on things that matter legally. They are only re
 ## 🌍 Real World Impact
 
 - India has **5 crore+ pending cases** — admin overload is a major bottleneck
-- A lawyer spends **3+ hours daily** on tasks VakilAgent can automate
+- A lawyer spends **3+ hours daily** on tasks VakilAI can automate
 - Missed court dates cost clients cases, money, and in criminal matters — freedom
-- VakilAgent gives small lawyers the **operational power of a large firm**
+- VakilAI gives small lawyers the **operational power of a large firm**
 
 ---
 
