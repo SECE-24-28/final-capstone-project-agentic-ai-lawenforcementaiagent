@@ -163,12 +163,6 @@ For the hackathon, we are demonstrating 3 core agent actions:
 
 ## 👥 Team
 
-**Team Name:** *(Your Team Name)*
+**Team Name:** *Devizo*
 **Track:** Agentic AI
-**Hackathon:** Import Paradox — Build-Ora
 
----
-
-## 📄 License
-
-MIT License — Built for Import Paradox Hackathon 2025
