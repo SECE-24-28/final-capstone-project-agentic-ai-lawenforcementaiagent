@@ -1,0 +1,16 @@
+fastapi
+uvicorn
+psycopg2-binary
+redis
+google-generativeai
+jinja2
+reportlab
+pydantic
+python-dotenv
+pytesseract
+Pillow
+python-multipart
+cloudinary
+pdf2image
+requests
+xhtml2pdf
