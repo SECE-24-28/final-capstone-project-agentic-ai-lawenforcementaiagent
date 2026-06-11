@@ -2,7 +2,7 @@ import os
 import google.generativeai as genai
 import logging
 from dotenv import load_dotenv
-
+from datetime import datetime  
 load_dotenv()
 logger = logging.getLogger(__name__)
 
@@ -13,7 +13,7 @@ if GEMINI_API_KEY:
 else:
     logger.warning("GEMINI_API_KEY not found in environment variables")
 
-model = genai.GenerativeModel('gemini-2.5-flash')
+model = genai.GenerativeModel('gemini-3-flash-preview')
 
 async def generate_document(document_type: str, context: dict, case_id: str):
     """Generates a legal document via Google Gemini API."""
@@ -46,45 +46,55 @@ CASE HISTORY:
             response = model.generate_content(prompt)
             return response.text
 
-        elif document_type == 'ADJOURNMENT_APPLICATION':
-            prompt = f"""You are a legal assistant. Draft an adjournment application in the exact format 
-used by Madurai District Court. Include:
-- Court header format: 'In the Court of District Munsif, Madurai'
-- Case number: {case_id}
-- Petitioner: {context.get('petitioner_name', '[Petitioner Name]')} ... Petitioner
-- Respondent: {context.get('respondent_name', '[Respondent Name]')} ... Respondent
-- PETITION FOR ADJOURNMENT as header
-- Body stating: advocate cannot attend, reason: {context.get('reason', 'personal reasons')}, adjournment count: {context.get('adjournment_count', 0)}
-- Signature line at bottom
-Keep formal legal language. This will be filed in court."""
+        elif document_type == 'ADJOURNMENT_REASON':
+            raw_reason = context.get('reason', 'personal reasons')
+            prompt = f"""You are a formal legal assistant.
+The user provided this raw, brief reason for why they need an adjournment today:
+"{raw_reason}"
+Convert this into exactly ONE highly formal, perfectly structured legal sentence.
+It must start exactly with the word "That ".
+Example: "That the counsel for the Petitioner is suffering from severe viral fever and is therefore not in a position to appear before this Hon'ble Court today."
+Return ONLY the sentence, no quotes, no extra text."""
             response = model.generate_content(prompt)
-            return response.text
-
+            # Strip any stray quotes and whitespace
+            return response.text.replace('"', '').strip()
         elif document_type == 'ORDER_SUMMARY':
             language = context.get('language', 'tamil')
-            prompt = f"""You are a legal assistant in India. Read this court order and create TWO summaries:
+            prompt = f"""You are a legal assistant in India. Read this court order and create TWO packages.
 
-1. For Advocate (detailed, legal language):
-   - What judge ordered
-   - What client must do
-   - Deadline
-   - Consequence if not followed
-   - Urgency level
+Lawyer Package (Detailed, Legal terminology):
+1. Technical order analysis (what judge said legally)
+2. Case history context (previous orders, arguments)
+3. Risk assessment (what could go wrong)
+4. Action items (what to do today, this week, by deadline)
+5. Appeal implications (if anything goes wrong)
+6. Client confirmation status (have you talked to client?)
+7. Strategic notes (opponent's position, strength of yours)
+8. Similar cases (precedent from Indian Kanoon)
+9. Checklist (step-by-step what to do)
+10. Timeline (exact dates for each action)
 
-2. For Client (plain language, use {language} language):
-   - Explain what court decided in simple words
-   - List exactly what client needs to do
-   - Give deadline clearly
-   - Warn about consequences
-   - Keep it short and clear
+Client Package (Simple language, use {language} language):
+1. What the court said (in their language)
+2. What it means for them
+3. What documents to bring
+4. By when (deadline)
+5. What happens if they don't
+6. Step-by-step action items
+7. Who to contact (lawyer name: {context.get('lawyer_name', '[Lawyer Name]')}, phone: {context.get('lawyer_phone', '[Lawyer Phone]')})
+8. Simple explanation of each step
+9. Reassurance (you can win if you do this)
+10. Emergency contact (who to call if stuck)
 
 Order text: {context.get('order_text')}
-Format as:
+
+CRITICAL INSTRUCTION: You MUST format your response exactly with these two split headers. Do not use markdown for the headers.
+
 ---ADVOCATE VERSION---
-[advocate summary]
+[lawyer package text]
 
 ---CLIENT VERSION---
-[client summary in {language}]"""
+[client package text]"""
             response = model.generate_content(prompt)
             content = response.text
             parts = content.split("---CLIENT VERSION---")

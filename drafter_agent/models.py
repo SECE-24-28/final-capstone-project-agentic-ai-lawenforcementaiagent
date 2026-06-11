@@ -15,6 +15,7 @@ class DocumentResponse(BaseModel):
     doc_id: str
     document_type: str
     content: str
+    client_content: Optional[str] = None
     approval_status: str
     created_at: str
 

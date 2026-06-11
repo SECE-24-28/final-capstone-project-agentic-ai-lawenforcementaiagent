@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<title>Application for Adjournment</title>
+
+<style>
+
+@page {
+    size: A4;
+    margin: 1in;
+}
+
+body {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 14pt;
+    line-height: 1.6;
+    color: black;
+}
+
+.center {
+    text-align: center;
+}
+
+.justify {
+    text-align: justify;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+.dotted {
+    border-bottom: 1px dotted black;
+    display: inline-block;
+    min-width: 180px;
+}
+
+
+.header {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 35px;
+}
+
+
+.case-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+
+.case-table td {
+    vertical-align: top;
+    padding: 5px;
+}
+
+
+.left {
+    width: 60%;
+    text-align: left;
+}
+
+
+.right {
+    width: 40%;
+    text-align: right;
+}
+
+
+.title {
+    text-align: center;
+    font-weight: bold;
+    margin: 35px 0;
+}
+
+
+.content {
+    text-align: justify;
+    margin-left: 20px;
+}
+
+
+.prayer {
+    margin-top: 25px;
+}
+
+
+.signature-table {
+    width: 100%;
+    margin-top: 60px;
+    border-collapse: collapse;
+}
+
+
+.signature-table td {
+    vertical-align: top;
+}
+
+
+.sign-left {
+    text-align: left;
+}
+
+
+.sign-right {
+    text-align: right;
+}
+
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="header">
+
+IN THE COURT OF 
+<span class="dotted">{{ court_name }}</span>,
+<span class="dotted">{{ district }}</span>
+
+</div>
+
+
+<p>
+<b>In the matter of:</b>
+</p>
+
+
+<table class="case-table">
+
+<tr>
+
+<td class="left">
+
+{{ petitioner_name }}
+
+</td>
+
+
+<td class="right">
+
+.............PETITIONER
+
+</td>
+
+</tr>
+
+
+<tr>
+
+<td colspan="2" class="center bold">
+
+<span class="underline">VERSUS</span>
+
+</td>
+
+</tr>
+
+
+<tr>
+
+<td class="left">
+
+{{ respondent_name }}
+
+</td>
+
+
+<td class="right">
+
+.............RESPONDENT
+
+</td>
+
+</tr>
+
+
+</table>
+
+
+
+<div class="title underline">
+
+APPLICATION FOR THE ADJOURNMENT OF THE CASE
+
+</div>
+
+
+
+<p>
+<b>MOST RESPECTFULLY SHOWETH:</b>
+</p>
+
+
+
+<p class="content">
+
+1. That the above noted case is pending and is fixed for today.
+
+</p>
+
+
+<p class="content">
+
+2. {{ ai_expanded_reason }}
+
+</p>
+
+
+<p class="content">
+
+3. That now the {{ filing_party_role }} wants to get adjourned the above noted case for next reasonable date of hearing.
+
+</p>
+
+
+<p class="content">
+
+4. That if the application is not accepted, the {{ filing_party_role }} will suffer an irreparable loss.
+
+</p>
+
+
+
+<div class="prayer">
+
+<p>
+<b><span class="underline">PRAYER:-</span></b>
+</p>
+
+
+<p class="content">
+
+In the above-mentioned circumstances, it is most humbly prayed that the instant application may kindly be accepted and adjourn the above titled suit for any other reasonable date, in the best interest of justice.
+
+</p>
+
+</div>
+
+
+
+
+<table class="signature-table">
+
+<tr>
+
+
+<td class="sign-left">
+
+<b>DATE:</b> 
+<span class="dotted">{{ current_date }}</span>
+
+<br>
+
+<b>{{ district }}</b>
+
+</td>
+
+
+
+<td class="sign-right">
+
+<b>
+
+<span class="dotted">{{ filing_party_name }}</span>
+
+<br>
+
+THROUGH
+
+<br>
+
+ADVOCATE
+
+<br>
+
+<span class="dotted">{{ lawyer_name }}</span>
+<br>
+<span class="dotted">{{ lawyer_phone }}</span>
+
+</b>
+
+
+</td>
+
+
+</tr>
+
+</table>
+
+
+
+</body>
+</html>
