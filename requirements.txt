@@ -1,0 +1,11 @@
+fastapi==0.95.2
+uvicorn==0.22.0
+SQLAlchemy==1.4.52
+psycopg2-binary==2.9.7
+APScheduler==3.10.1
+python-dotenv==1.0.0
+pydantic==1.10.9
+pytest==7.4.0
+httpx==0.23.3
+sendgrid==6.11.0
+twilio==8.5.0
